@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+}
+
+.glass-panel {
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff2a2a;
+}
+
+/* Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Video Modal */
+#video-modal {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+#video-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+#video-modal video {
+  max-height: 90vh;
+  max-width: 95vw;
+  width: auto;
+  height: auto;
+}
+
+/* Modal loader */
+#modal-loader {
+  transition: opacity 0.3s ease;
+}
+#modal-loader.hidden {
+  opacity: 0;
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #ff2a2a;
+  outline-offset: 2px;
+}
+
+section {
+  position: relative;
+}
+
+img {
+  background-color: #111;
+}
+
+.video-card:hover .bg-brand-red {
+  animation: pulse-play 1.5s ease infinite;
+}
+
+@keyframes pulse-play {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 42, 42, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(255, 42, 42, 0);
+  }
+}
+
+/* Loader spin */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
